@@ -47,27 +47,25 @@ Dado("que eu tenho uma tarefa indesejada") do
   )
 end
 
-Quando("eu solicito a exlusão dessa tarefa") do
-  tarefa_para_remover = @tarefas_page.item(@nova_tarefa[:nome])
-  tarefa_para_remover.find('#delete-button').click
+Quando("eu solicito a exclusão dessa tarefa") do
+  @tarefa_para_remover = @tarefas_page.item(@nova_tarefa[:nome])
+  @tarefa_para_remover.find('#delete-button').click
 end
 
 Quando("confirmo a ação de exclusão") do
-  pending # Write code here that turns the phrase above into concrete actions
+  @tarefas_page.mensagem_confirmacao.confirmar_exclusao
 end
 
 Então("esta tarefa não deve ser exibida na lista") do
-  pending # Write code here that turns the phrase above into concrete actions
-end
-
-Quando("eu solicito a exclusão dessa tarefa") do
-  pending # Write code here that turns the phrase above into concrete actions
+  @tarefas_page.busca(@tarefa_para_remover[:nome])
+  expect(@tarefas_page.itens.size).to eql 0
 end
 
 Quando("eu cancelo esta ação") do
-  pending # Write code here that turns the phrase above into concrete actions
+  @tarefas_page.mensagem_confirmacao.cancelar_exclusao
 end
 
 Então("esta tarefa permanece na lista") do
-  pending # Write code here that turns the phrase above into concrete actions
+  @tarefas_page.busca(@tarefa_para_remover[:nome])
+  expect(@tarefas_page.itens.size).to eql 1
 end

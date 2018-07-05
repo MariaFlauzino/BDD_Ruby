@@ -1,3 +1,17 @@
+# mensagem de confirmação de exclusão
+class Mensagem_Confirmacao < SitePrism::Section
+  element :botao_sim, '.btn-danger'
+  element :botao_nao, '.btn-default'
+  
+  def confirmar_exclusao
+    botao_sim.click
+  end
+
+  def cancelar_exclusao
+    botao_nao.click
+  end
+end
+
 # - Adicionar é classe que representa a subpagina Adicionar tarefas
 # que será tratada como uma Seção do SitePrism
 class Adicionar < SitePrism::Section
@@ -45,4 +59,5 @@ class TarefasPage < SitePrism::Page
   end
 
   section :adicionar, Adicionar, '#add-task-view'
+  section :mensagem_confirmacao, Mensagem_Confirmacao, '.modal-content'
 end

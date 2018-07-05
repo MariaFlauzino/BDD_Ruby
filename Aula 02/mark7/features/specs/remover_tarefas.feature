@@ -6,15 +6,15 @@ Funcionalidade: Remover uma tarefa
     Sendo um usuário que possui uma tarefa indesejada
     Posso excluir uma tarefa
 
-    @autenticado
+    @autenticado @logout
     Cenário: Apagar uma tarefa
 
         Dado que eu tenho uma tarefa indesejada
-        Quando eu solicito a exlusão dessa tarefa 
+        Quando eu solicito a exclusão dessa tarefa 
         E confirmo a ação de exclusão
         Então esta tarefa não deve ser exibida na lista
     
-    @autenticado
+    @autenticado @logout
     Cenário: Desistir da remoção
 
         Dado que eu tenho uma tarefa indesejada
