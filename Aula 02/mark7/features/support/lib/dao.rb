@@ -19,6 +19,11 @@ class DAO
         #deleta qualquer tarefa que tiver o nome
         tasks.delete_many('title' => nome)
     end
+
+    def remover_todastarefas
+        tasks = @cliente[:tasks]
+        tasks.delete_many()
+    end
 end
 
 # Mongo x SQL

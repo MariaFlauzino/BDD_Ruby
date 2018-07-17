@@ -57,7 +57,7 @@ Quando("confirmo a ação de exclusão") do
 end
 
 Então("esta tarefa não deve ser exibida na lista") do
-  @tarefas_page.busca(@tarefa_para_remover[:nome])
+  @tarefas_page.busca(@nova_tarefa[:nome])
   expect(@tarefas_page.itens.size).to eql 0
 end
 
@@ -66,6 +66,6 @@ Quando("eu cancelo esta ação") do
 end
 
 Então("esta tarefa permanece na lista") do
-  @tarefas_page.busca(@tarefa_para_remover[:nome])
+  @tarefas_page.busca(@nova_tarefa[:nome])
   expect(@tarefas_page.itens.size).to eql 1
 end
